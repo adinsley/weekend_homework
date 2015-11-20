@@ -11,7 +11,7 @@ require_relative  './warehouse_homework'
 # found_bays = multiple_bays("bath fizzers", "bookmark", "cookie jar")
 # puts "required bays are #{found_bays}"
 
-found_items = multiple_items("b7", "c8")
+found_items = multiple_items("b7", "a3")
 puts "required items are #{found_items}"
 
 distance = distance_between_items("b7", "a3")
