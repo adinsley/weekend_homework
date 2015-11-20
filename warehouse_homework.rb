@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 WAREHOUSE = [
   
   {location:"b7",
@@ -69,20 +71,35 @@ end
 # required_bays.max - required_bays.min
 # end
 
-def distance_between_items(*locations)
-  required_bays = WAREHOUSE.select do |bay| 
-    # bay[:location] == location1 || bay[:location] == location2
-    # locations.includes?(bay)
-    # false
-    #shall we include this bay in our selected list
-    locations.include?(bay[:location])
-  end
+# def distance_between_items(*locations)
+#   required_bays = WAREHOUSE.select do |bay| 
+    
+#     locations.include?(bay[:location])
+#   end
   
 
-  required_bays.map!{|bay| bay[:distance]}
+#   required_bays.map!{|bay| bay[:distance]}
 
-  required_bays.max - required_bays.min
-end
+#   required_bays.max - required_bays.min
+# end
+
+# Problem 6_________________________________________
+
+
+def order_from_entrance(*items)
+
+  required_bays = WAREHOUSE.select do |bay| 
+      
+  items.include?(bay[:item])
+
+  end
+
+
+ordered_route = required_bays.sort_by { |bay| bay[:distance] }
+
+ordered_route.map{|bay| "#{bay[:location]} #{bay[:item]}" }.join(" - ")
+  # order_array = required_bays.map{|bay| bay[:distance, :location]}
+end  
 
 
 

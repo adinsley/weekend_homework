@@ -14,5 +14,10 @@ require_relative  './warehouse_homework'
 found_items = multiple_items("b7", "a3")
 puts "required items are #{found_items}"
 
-distance = distance_between_items("b7", "a3")
-puts "the furthest distance between items is #{distance}"
+# distance = distance_between_items("b7", "a3")
+# puts "the furthest distance between items is #{distance}"
+
+route = order_from_entrance("bath fizzers", "blouse", "bookmark")
+puts route
+
+
