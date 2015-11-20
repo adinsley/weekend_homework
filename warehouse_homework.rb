@@ -46,8 +46,8 @@ end
 
 
 def multiple_bays(item1, item2, item3)
-  # required_bays = WAREHOUSE.select{|bay| bay[:item] == item1 || bay[:item] == item2 ||  bay[:item] == item3}
   required_bays = WAREHOUSE.select{|bay| bay[:item] == item1 || bay[:item] == item2 ||  bay[:item] == item3}
+  
   
   required_bays.map{|bay| bay[:location]}.join(", ")
 
@@ -55,9 +55,36 @@ def multiple_bays(item1, item2, item3)
 
  #Problem 4______________________________
 
- def multiple_items(*location)
+def multiple_items(*location)
 location.map!{|bay| bay = item_at_bay(bay)}.join(", ")
 end
+
+# Problem 5___________________
+
+# def distance_between_items(location1, location2)
+#   required_bays = WAREHOUSE.select{|bay| bay[:location] == location1 || bay[:location] == location2}  
+
+#   required_bays.map!{|bay| bay[:distance]}
+
+# required_bays.max - required_bays.min
+# end
+
+def distance_between_items(*locations)
+  required_bays = WAREHOUSE.select do |bay| 
+    # bay[:location] == location1 || bay[:location] == location2
+    # locations.includes?(bay)
+    # false
+    #shall we include this bay in our selected list
+    locations.include?(bay[:location])
+  end
+  
+
+  required_bays.map!{|bay| bay[:distance]}
+
+  required_bays.max - required_bays.min
+end
+
+
 
 
 
